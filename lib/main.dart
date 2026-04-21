@@ -53,6 +53,9 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
+
+            //jornada
+            Padding(padding: EdgeInsets.all(8), child: JourneyCustom()),
           ],
         ),
       ),
@@ -98,6 +101,77 @@ class HeaderCustom extends StatelessWidget {
           child: Icon(Icons.notifications_none, color: Colors.black, size: 30),
         ),
       ],
+    );
+  }
+}
+
+//custom para Journey
+class JourneyCustom extends StatelessWidget {
+  const JourneyCustom({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      width: 1000,
+      height: 230,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        image: DecorationImage(
+          image: AssetImage('assets/images/journey.png'),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Plan Your Next\nJourney',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+
+          Padding(
+            padding: EdgeInsets.only(top: 5, bottom: 15),
+            child: Text(
+              'Plan your next journey with\nease and confidence.',
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
+          ),
+
+          ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(0xFFF87315),
+              minimumSize: Size(0, 48),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Explore Now',
+                  style: TextStyle(color: Colors.white, fontSize: 19),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 8),
+                  child: Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                    size: 22,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
