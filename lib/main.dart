@@ -21,46 +21,50 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFFEDF5FD),
       body: SafeArea(
-        child: Column(
-          children: [
-            //header
-            Padding(padding: EdgeInsets.all(8), child: HeaderCustom()),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              //header
+              Padding(padding: EdgeInsets.all(8), child: HeaderCustom()),
 
-            //campo de busca
-            Padding(
-              padding: EdgeInsets.all(8),
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                height: 55,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Row(
-                  children: [
-                    Icon(Icons.search),
-                    Padding(
-                      padding: EdgeInsets.only(left: 8),
-                      child: Text(
-                        'Search destination...',
-                        style: TextStyle(fontSize: 16),
+              //campo de busca
+              Padding(
+                padding: EdgeInsets.all(8),
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  height: 55,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(Icons.search),
+                      Padding(
+                        padding: EdgeInsets.only(left: 8),
+                        child: Text(
+                          'Search destination...',
+                          style: TextStyle(fontSize: 16),
+                        ),
                       ),
-                    ),
 
-                    Spacer(),
-                    Icon(Icons.tune),
-                  ],
+                      Spacer(),
+                      Icon(Icons.tune),
+                    ],
+                  ),
                 ),
               ),
-            ),
 
-            //jornada
-            Padding(padding: EdgeInsets.all(8), child: JourneyCustom()),
-            //filtro
-            Padding(padding: EdgeInsets.all(8), child: FilterCustom()),
-            //destinations
-            Padding(padding: EdgeInsets.all(8), child: DestinationsCustom()),
-          ],
+              //jornada
+              Padding(padding: EdgeInsets.all(8), child: JourneyCustom()),
+              //filtro
+              Padding(padding: EdgeInsets.all(8), child: FilterCustom()),
+              //destinations
+              Padding(padding: EdgeInsets.all(8), child: DestinationsCustom()),
+              //promo
+              Padding(padding: EdgeInsets.all(8), child: PromoCustom()),
+            ],
+          ),
         ),
       ),
     );
@@ -376,6 +380,116 @@ class DestinationCard extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class PromoCustom extends StatelessWidget {
+  const PromoCustom({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      height: 230,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Colors.white, Color(0XFFFEF4EC)],
+        ),
+      ),
+      child: Row(
+        children: [
+          PromoText(),
+          Spacer(),
+          Image.asset('assets/images/gift.png', scale: 3),
+        ],
+      ),
+    );
+  }
+}
+
+class PromoText extends StatelessWidget {
+  const PromoText({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          height: 40,
+          width: 105,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            color: Color(0XFFFCF1E8),
+          ),
+
+          alignment: Alignment.center,
+          child: Text(
+            'PROMO',
+            style: TextStyle(
+              color: Color(0XFFE7702B),
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+
+        Padding(
+          padding: EdgeInsets.only(top: 16, bottom: 5),
+          child: RichText(
+            text: TextSpan(
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+              children: [
+                TextSpan(text: 'Get '),
+                TextSpan(
+                  text: '\$3 Off ',
+                  style: TextStyle(color: Color(0XFF2964D9)),
+                ),
+                TextSpan(text: 'on next Trip'),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(bottom: 16),
+          child: Text(
+            'Invite friends and earn \nrewards',
+            style: TextStyle(color: Color(0XFF66707D), fontSize: 20),
+          ),
+        ),
+
+        Container(
+          height: 50,
+          width: 165,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            color: Color(0xFF1A1A2E),
+          ),
+
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(right: 5),
+                child: Text(
+                  'Invite Now',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+              Icon(Icons.arrow_forward, color: Colors.white),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
