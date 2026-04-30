@@ -13,58 +13,214 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int isSelect = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFEDF5FD),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              //header
-              Padding(padding: EdgeInsets.all(8), child: HeaderCustom()),
 
-              //campo de busca
-              Padding(
-                padding: EdgeInsets.all(8),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.symmetric(horizontal: 40),
+        height: 90,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30),
+          color: Colors.white,
+        ),
+
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 15),
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isSelect = 0;
+                  });
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/icons/home.png',
+                      scale: 0.9,
+                      color: isSelect == 0 ? Color(0XFFE68238) : Colors.black,
+                    ),
+                    Text(
+                      'Home',
+                      style: TextStyle(
+                        color: isSelect == 0 ? Color(0XFFE68238) : Colors.black,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Spacer(),
+
+            Padding(
+              padding: EdgeInsets.only(bottom: 15),
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isSelect = 1;
+                  });
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/icons/data.png',
+                      scale: 0.9,
+                      color: isSelect == 1 ? Color(0XFFE68238) : Colors.black,
+                    ),
+                    Text(
+                      'My Data',
+                      style: TextStyle(
+                        color: isSelect == 1 ? Color(0XFFE68238) : Colors.black,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            Spacer(),
+
+            Padding(
+              padding: EdgeInsets.only(bottom: 15),
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isSelect = 2;
+                  });
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/icons/discover.png',
+                      scale: 0.9,
+                      color: isSelect == 2 ? Color(0XFFE68238) : Colors.black,
+                    ),
+                    Text(
+                      'Discover',
+                      style: TextStyle(
+                        color: isSelect == 2 ? Color(0XFFE68238) : Colors.black,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            Spacer(),
+
+            Padding(
+              padding: EdgeInsets.only(bottom: 15),
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isSelect = 3;
+                  });
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/icons/account.png',
+                      scale: 0.9,
+                      color: isSelect == 3 ? Color(0XFFE68238) : Colors.black,
+                    ),
+                    Text(
+                      'Profile',
+                      style: TextStyle(
+                        color: isSelect == 3 ? Color(0XFFE68238) : Colors.black,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(padding: EdgeInsets.only(top: 50)),
+            //header
+            Padding(padding: EdgeInsets.all(8), child: HeaderCustom()),
+
+            //campo de busca
+            Padding(
+              padding: EdgeInsets.all(8),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                height: 55,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.search),
+                    Padding(
+                      padding: EdgeInsets.only(left: 8),
+                      child: Text(
+                        'Search destination...',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+
+                    Spacer(),
+                    Icon(Icons.tune),
+                  ],
+                ),
+              ),
+            ),
+
+            //jornada
+            Padding(padding: EdgeInsets.all(8), child: JourneyCustom()),
+            //filtro
+            Padding(padding: EdgeInsets.all(8), child: FilterCustom()),
+            //destinations
+            Padding(padding: EdgeInsets.all(8), child: DestinationsCustom()),
+            //promo
+            Padding(padding: EdgeInsets.all(8), child: PromoCustom()),
+            //view all destination
+            Padding(
+              padding: EdgeInsets.only(left: 8, top: 18, bottom: 18),
+              child: Expanded(
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
                   height: 55,
                   decoration: BoxDecoration(
-                    color: Colors.white,
                     borderRadius: BorderRadius.circular(30),
+                    color: Color(0XFFF87315),
                   ),
-                  child: Row(
-                    children: [
-                      Icon(Icons.search),
-                      Padding(
-                        padding: EdgeInsets.only(left: 8),
-                        child: Text(
-                          'Search destination...',
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ),
 
-                      Spacer(),
-                      Icon(Icons.tune),
-                    ],
+                  alignment: Alignment.center,
+                  child: Text(
+                    'View All Destination',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                 ),
               ),
-
-              //jornada
-              Padding(padding: EdgeInsets.all(8), child: JourneyCustom()),
-              //filtro
-              Padding(padding: EdgeInsets.all(8), child: FilterCustom()),
-              //destinations
-              Padding(padding: EdgeInsets.all(8), child: DestinationsCustom()),
-              //promo
-              Padding(padding: EdgeInsets.all(8), child: PromoCustom()),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -235,7 +391,7 @@ class _FilterCustomState extends State<FilterCustom> {
   }
 }
 
-//gestinations custom
+//destinations custom
 class DestinationsCustom extends StatelessWidget {
   const DestinationsCustom({super.key});
 
@@ -243,22 +399,26 @@ class DestinationsCustom extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          children: [
-            Text(
-              'Top Destinations',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-            ),
-            Spacer(),
-            Text(
-              'See all',
-              style: TextStyle(
-                decoration: TextDecoration.underline,
-                color: Color(0xFF687086),
-                fontSize: 14,
+        Padding(
+          padding: EdgeInsets.all(8),
+          child: Row(
+            children: [
+              Text(
+                'Top Destinations',
+
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
               ),
-            ),
-          ],
+              Spacer(),
+              Text(
+                'See all',
+                style: TextStyle(
+                  decoration: TextDecoration.underline,
+                  color: Color(0xFF687086),
+                  fontSize: 14,
+                ),
+              ),
+            ],
+          ),
         ),
 
         Row(
