@@ -203,16 +203,18 @@ class _HomePageState extends State<HomePage> {
             Padding(padding: EdgeInsets.all(8), child: PromoCustom()),
             //view all destination
             Padding(
-              padding: EdgeInsets.only(left: 8, top: 18, bottom: 18),
+              padding: EdgeInsets.only(left: 8, right: 8, top: 18, bottom: 18),
               child: Expanded(
-                child: Container(
-                  height: 55,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: Color(0XFFF87315),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0XFFF87315),
+                    elevation: 0,
+                    minimumSize: Size(double.infinity, 55),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
                   ),
-
-                  alignment: Alignment.center,
                   child: Text(
                     'View All Destination',
                     style: TextStyle(color: Colors.white, fontSize: 18),
@@ -467,9 +469,12 @@ class DestinationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.white,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
+    return Container(
+      margin: EdgeInsets.all(7),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(22),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -526,9 +531,12 @@ class DestinationCard extends StatelessWidget {
                   children: [
                     Text(
                       '\$$price',
-                      style: TextStyle(color: Color(0xFFF96D1F), fontSize: 17),
+                      style: TextStyle(
+                        color: Color(0xFFF96D1F),
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-
                     Text(
                       '/person',
                       style: TextStyle(fontSize: 17, color: Color(0xFF8A939E)),
@@ -627,16 +635,18 @@ class PromoText extends StatelessWidget {
           ),
         ),
 
-        Container(
-          height: 50,
-          width: 165,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            color: Color(0xFF1A1A2E),
+        ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xFF1A1A2E),
+            elevation: 0,
+            minimumSize: Size(165, 50),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
           ),
-
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
                 padding: EdgeInsets.only(right: 5),
@@ -645,7 +655,7 @@ class PromoText extends StatelessWidget {
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
-              Icon(Icons.arrow_forward, color: Colors.white),
+              Icon(Icons.arrow_forward, color: Colors.white, size: 25),
             ],
           ),
         ),
