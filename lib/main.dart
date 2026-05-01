@@ -9,7 +9,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: const HomePage());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const HomePage(),
+    );
   }
 }
 
@@ -161,9 +164,11 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(padding: EdgeInsets.only(top: 50)),
             //header
-            Padding(padding: EdgeInsets.all(8), child: HeaderCustom()),
+            Padding(
+              padding: EdgeInsets.only(left: 8, right: 8, top: 50, bottom: 8),
+              child: HeaderCustom(),
+            ),
 
             //campo de busca
             Padding(
@@ -663,5 +668,3 @@ class PromoText extends StatelessWidget {
     );
   }
 }
-
-//consertar o problema de alinhamento do top destinations depois
